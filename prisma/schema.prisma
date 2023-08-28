@@ -16,4 +16,28 @@ model User {
   name String
   // age Int @default(0) //default
   age Int?   //optional
+
+}
+
+model Profile {
+  id Int @id @default(autoincrement())
+  bio String
+  userId Int
+  @@map("profiles")
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  @@map("categories")
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  authorId Int
+  category Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
+  @@map("posts")
 }
