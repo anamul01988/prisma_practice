@@ -15,28 +15,37 @@ model User {
   email String @unique //@unique dewate duplicate value ar database a jabe nah
   name String
   // age Int @default(0) //default
-  age Int?   //optional
+  // age Int?   //optional
+  role String
+  profile Profile?
+  posts Post[] //prisma extension er jonno automatic create hoye jawer kotha kintu hoy ni
+
+  @@map("users")
 
 }
 
 model Profile {
   id Int @id @default(autoincrement())
   bio String
-  userId Int
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
   @@map("profiles")
 }
 
 model Category {
   id Int @id @default(autoincrement())
   name String
-  @@map("categories")
+  posts Post[]
+  @@map("categoris")
 }
 
 model Post {
   id Int @id @default(autoincrement())
   title String
   authorId Int
-  category Int
+  author User @relation(fields: [authorId], references: [id])
+  categoryId Int
+  category Category @relation(fields: [categoryId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 
   @@map("posts")
