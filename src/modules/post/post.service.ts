@@ -15,7 +15,7 @@ const cratePost = async (data: Post): Promise<Post> => {
 
 const getAllPost = async (options: any) => {
   const { sortBy, sortOrder, searchTerm, page, limit } = options;
-  const skip = parseInt(limit) * parseInt(page) - parseInt(limit) || 0; //skip ar limit na dile kintu error ashto jodi postman theke list kortam ,, tai default 0 dile ar problem hobe nah
+  const skip = parseInt(limit) * parseInt(page) - parseInt(limit) || 0; //skip ar limit na dile kintu error ashto jodi postman theke list dekhte jetam ,, tai default 0 dile ar error ashbe nah
   const take = parseInt(limit) || 10;
   //   const result = await prisma.post.findMany({
   //     skip,
