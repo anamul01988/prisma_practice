@@ -66,7 +66,7 @@ const getAllPost = async (options: any) => {
 const updatePost = async (
   id: number,
   payload: Partial<Post>
-): Promise<Post | number> => {
+): Promise<Post | number> => { //aita to database update korbe o ba 1 return korbe tai dewa laglo
   // const result = await prisma.post.update({
   //     where: {
   //         id
